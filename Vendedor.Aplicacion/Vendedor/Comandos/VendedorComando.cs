@@ -11,6 +11,8 @@ namespace Vendedor.Aplicacion.Vendedor.Comandos
 
         [Required(ErrorMessage = "El campo IdTipoDcoumento es obligatorio")]
         int idTipoDocumento,
+        [Required(ErrorMessage = "El campo NumeroDocumento es obligatorio")]
+        string NumeroDocumento,
         [Required(ErrorMessage = "El campo Nombre es obligatorio")]
         string Nombre,
         [Required(ErrorMessage = "El campo Apellido es obligatorio")]
