@@ -10,6 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vendedor.Aplicacion", "Vend
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vendedor.Infraestructura", "Vendedor.Infraestructura\Vendedor.Infraestructura.csproj", "{BF72E179-9716-41D6-84F5-2AD0B5BAE300}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vendedor.Tests", "Vendedor.Tests\Vendedor.Tests.csproj", "{0583887E-ADDD-4DA7-B898-D9654056E5E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,9 +36,16 @@ Global
 		{BF72E179-9716-41D6-84F5-2AD0B5BAE300}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF72E179-9716-41D6-84F5-2AD0B5BAE300}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF72E179-9716-41D6-84F5-2AD0B5BAE300}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0583887E-ADDD-4DA7-B898-D9654056E5E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0583887E-ADDD-4DA7-B898-D9654056E5E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0583887E-ADDD-4DA7-B898-D9654056E5E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0583887E-ADDD-4DA7-B898-D9654056E5E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0583887E-ADDD-4DA7-B898-D9654056E5E2} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3266EBCE-8948-4B2D-AC96-64652C87CC3C}
