@@ -57,6 +57,11 @@ namespace Vendedor.Infraestructura.Adaptadores.Configuraciones
                 .HasColumnName("idtipodocumento")
                 .IsRequired();
 
+            builder.Property(x => x.NumeroDocumento)
+                .HasColumnName("numerodocumento")
+                .HasMaxLength(20)
+                .IsRequired();
+
         }
     }
 }

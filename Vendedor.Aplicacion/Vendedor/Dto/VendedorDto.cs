@@ -8,6 +8,7 @@ namespace Vendedor.Aplicacion.Vendedor.Dto
     public class VendedorDto
     {
         public int idTipoDocumento { get; set; }
+        public string NumeroDocumento { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Telefono { get; set; }
