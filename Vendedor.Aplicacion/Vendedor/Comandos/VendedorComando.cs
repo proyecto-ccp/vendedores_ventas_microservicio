@@ -10,7 +10,7 @@ namespace Vendedor.Aplicacion.Vendedor.Comandos
     public record VendedorCrear(
 
         [Required(ErrorMessage = "El campo IdTipoDcoumento es obligatorio")]
-        int idTipoDocumento,
+        int IdTipoDocumento,
         [Required(ErrorMessage = "El campo NumeroDocumento es obligatorio")]
         string NumeroDocumento,
         [Required(ErrorMessage = "El campo Nombre es obligatorio")]
@@ -25,7 +25,9 @@ namespace Vendedor.Aplicacion.Vendedor.Comandos
         [EmailAddress(ErrorMessage = "El formato del correo no es válido")]
         string Correo,
         [Required(ErrorMessage = "El campo Direccion es obligatorio")]
-        string Direccion
+        string Direccion,
+        [Required(ErrorMessage = "El campo Idzona es obligatorio")]
+        Guid? Idzona 
         
         ):IRequest<BaseOut>;
     
