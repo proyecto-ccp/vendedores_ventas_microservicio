@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Vendedor.Aplicacion.Comun;
 using Vendedor.Aplicacion.Vendedor.Comandos;
+using Vendedor.Aplicacion.Vendedor.Consultas;
+using Vendedor.Aplicacion.Vendedor.Dto;
 
 namespace ServicioVendedor.Api.Controllers
 {
@@ -46,6 +48,93 @@ namespace ServicioVendedor.Api.Controllers
             if (output.Resultado != Resultado.Error)
             {
                 return Created(string.Empty, output);
+            }
+            else
+            {
+                return Problem(output.Mensaje, statusCode: (int)output.Status);
+            }
+        }
+
+        /// <summary>
+        /// Obtiene la lista del atributo de producto categorias
+        /// </summary>
+        /// <response code="200"> 
+        /// </response>
+        [HttpGet]
+        [Route("Consultar")]
+        [ProducesResponseType(typeof(ListaVendedoresOut), 200)]
+        [ProducesResponseType(typeof(ProblemDetails), 401)]
+        [ProducesResponseType(typeof(BaseOut), 404)]
+        [ProducesResponseType(typeof(ProblemDetails), 500)]
+        public async Task<IActionResult> Consultar()
+        {
+            var output = await _mediator.Send(new VendedoresConsulta());
+
+            if (output.Resultado == Resultado.Exitoso)
+            {
+                return Ok(output);
+            }
+            else if (output.Resultado == Resultado.SinRegistros)
+            {
+                return NotFound(new { output.Resultado, output.Mensaje, output.Status });
+            }
+            else
+            {
+                return Problem(output.Mensaje, statusCode: (int)output.Status);
+            }
+        }
+
+        /// <summary>
+        /// Obtiene un vendedor por su Identificador
+        /// </summary>
+        /// <response code="200"> 
+        /// </response>
+        [HttpGet]
+        [Route("{IdVendedor}")]
+        [ProducesResponseType(typeof(VendedorOut), 200)]
+        [ProducesResponseType(typeof(ProblemDetails), 401)]
+        [ProducesResponseType(typeof(BaseOut), 404)]
+        [ProducesResponseType(typeof(ProblemDetails), 500)]
+        public async Task<IActionResult> ConsultarPorId(Guid IdVendedor)
+        {
+            var output = await _mediator.Send(new VendedorPorIdConsulta(IdVendedor));
+
+            if (output.Resultado == Resultado.Exitoso)
+            {
+                return Ok(output);
+            }
+            else if (output.Resultado == Resultado.SinRegistros)
+            {
+                return NotFound(new { output.Resultado, output.Mensaje, output.Status });
+            }
+            else
+            {
+                return Problem(output.Mensaje, statusCode: (int)output.Status);
+            }
+        }
+
+        /// <summary>
+        /// Obtiene un vendedor por su Identificador
+        /// </summary>
+        /// <response code="200"> 
+        /// </response>
+        [HttpGet]
+        [Route("TipoDocumento/{IdTipoDocumento}/Documento/{Documento}")]
+        [ProducesResponseType(typeof(VendedorOut), 200)]
+        [ProducesResponseType(typeof(ProblemDetails), 401)]
+        [ProducesResponseType(typeof(BaseOut), 404)]
+        [ProducesResponseType(typeof(ProblemDetails), 500)]
+        public async Task<IActionResult> ConsultarPorId([FromRoute] int IdTipoDocumento, string Documento)
+        {
+            var output = await _mediator.Send(new VendedorPorDocumentoConsulta(IdTipoDocumento, Documento));
+
+            if (output.Resultado == Resultado.Exitoso)
+            {
+                return Ok(output);
+            }
+            else if (output.Resultado == Resultado.SinRegistros)
+            {
+                return NotFound(new { output.Resultado, output.Mensaje, output.Status });
             }
             else
             {
