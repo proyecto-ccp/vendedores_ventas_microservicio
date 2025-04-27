@@ -19,13 +19,14 @@ namespace Vendedor.Tests.Aplicacion.DataTests
             };
 
             var comandoOk = new VendedorCrear(
-                idTipoDocumento: 1,
+                IdTipoDocumento: 1,
                 NumeroDocumento: "123456789",
                 Nombre: "Juan",
                 Apellido: "Pérez",
                 Telefono: "(+57) 123-456-7890",
                 Correo: "correo@correo.com",
-                Direccion: "Carrera 1 # 1-1"
+                Direccion: "Carrera 1 # 1-1",
+                Idzona: Guid.NewGuid()
                 );
 
             var respuestaOk = new BaseOut

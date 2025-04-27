@@ -62,6 +62,10 @@ namespace Vendedor.Infraestructura.Adaptadores.Configuraciones
                 .HasMaxLength(20)
                 .IsRequired();
 
+            builder.Property(x => x.Idzona)
+                .HasColumnName("idzona")
+                .IsRequired();
+
         }
     }
 }
