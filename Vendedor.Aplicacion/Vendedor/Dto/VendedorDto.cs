@@ -7,6 +7,7 @@ namespace Vendedor.Aplicacion.Vendedor.Dto
     [ExcludeFromCodeCoverage]
     public class VendedorDto
     {
+        public Guid Id { get; set; }
         public int idTipoDocumento { get; set; }
         public string NumeroDocumento { get; set; }
         public string Nombre { get; set; }

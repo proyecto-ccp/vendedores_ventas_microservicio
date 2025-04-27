@@ -3,7 +3,6 @@ using Microsoft.OpenApi.Models;
 using Productos.Infraestructura.Adaptadores.Repositorios;
 using System.Reflection;
 using Vendedor.Dominio.Puerto.Repositorios;
-using Vendedor.Dominio.Servicios.Documentos;
 using Vendedor.Dominio.Servicios.Vendedores;
 using Vendedor.Infraestructura.Adaptadores.RepositorioGenerico;
 using Vendedor.Infraestructura.Adaptadores.Repositorios;
@@ -68,7 +67,8 @@ builder.Services.AddTransient<IVendedorRepositorio, VendedorRepositorio>();
 builder.Services.AddTransient<IDocumentoRepositorio, DocumentosRepositorio>();
 //Capa Dominio - Servicios
 builder.Services.AddTransient<Registrar>();
-builder.Services.AddTransient<Listar>();
+builder.Services.AddTransient<Consultar>();
+
 
 var app = builder.Build();
 

@@ -17,11 +17,6 @@ namespace Vendedor.Infraestructura.Adaptadores.Repositorios
             _documento = documento;
         }
 
-        public async Task<List<Documento>> ListarTiposDocumento()
-        {
-            return await _documento.DarListado();
-        }
-
         public async Task<Documento> ObtenerDocumentoPorId(int tipoDocumento)
         {
             return await _documento.BuscarPorLlave(tipoDocumento);

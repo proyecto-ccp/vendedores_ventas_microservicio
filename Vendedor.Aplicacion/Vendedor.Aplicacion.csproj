@@ -7,8 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Documento\Comandos\" />
-    <Folder Include="Documento\Consultas\" />
+    <Compile Remove="Documento\**" />
+    <EmbeddedResource Remove="Documento\**" />
+    <None Remove="Documento\**" />
   </ItemGroup>
 
   <ItemGroup>
