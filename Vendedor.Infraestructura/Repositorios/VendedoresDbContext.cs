@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.CodeAnalysis;
+using Vendedor.Dominio.ObjetoValor;
 using Vendedor.Infraestructura.Adaptadores.Configuraciones;
+using Vendedor.Infraestructura.Configuraciones;
 
 namespace Productos.Infraestructura.Adaptadores.Repositorios
 {
@@ -10,10 +12,12 @@ namespace Productos.Infraestructura.Adaptadores.Repositorios
         public VendedoresDbContext(DbContextOptions<VendedoresDbContext> options): base(options){ }
 
         public DbSet<Vendedor.Dominio.Entidades.Vendedor> Vendedores { get; set; }
+        public DbSet<Documento> Documentos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new VendedorConfiguracion());
+            modelBuilder.ApplyConfiguration(new TipoDocumentoConfiguracion());
         }
     }
 }
