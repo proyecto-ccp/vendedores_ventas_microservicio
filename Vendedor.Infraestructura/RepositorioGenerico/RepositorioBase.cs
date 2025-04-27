@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Productos.Infraestructura.Adaptadores.Repositorios;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq.Expressions;
 
 namespace Vendedor.Infraestructura.Adaptadores.RepositorioGenerico
 {
@@ -51,7 +52,25 @@ namespace Vendedor.Infraestructura.Adaptadores.RepositorioGenerico
             await ctx.DisposeAsync();
             return res.Entity;
         }
-        
+
+        public async Task<T> BuscarPorCampos(Expression<Func<T, bool>> expr)
+        {
+            var ctx = GetContext();
+            var entitySet = ctx.Set<T>();
+            var res = await entitySet.AsNoTracking().FirstOrDefaultAsync(expr);
+            await ctx.DisposeAsync();
+            return res;
+        }
+
+        public async Task<List<T>> DarListadoPorCampos(Expression<Func<T, bool>> expr)
+        {
+            var ctx = GetContext();
+            var entitySet = ctx.Set<T>();
+            var res = await entitySet.AsNoTracking().Where(expr).ToListAsync();
+            await ctx.DisposeAsync();
+            return res;
+        }
+
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)
         {
