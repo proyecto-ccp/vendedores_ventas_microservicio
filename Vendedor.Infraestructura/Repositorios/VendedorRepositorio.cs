@@ -1,6 +1,5 @@
 ﻿
 using System.Diagnostics.CodeAnalysis;
-using Vendedor.Dominio.ObjetoValor;
 using Vendedor.Dominio.Puerto.Repositorios;
 using Vendedor.Infraestructura.Adaptadores.RepositorioGenerico;
 
@@ -35,5 +34,6 @@ namespace Vendedor.Infraestructura.Adaptadores.Repositorios
         {
             return await _repositorioVendedor.DarListado();
         }
+
     }
 }
