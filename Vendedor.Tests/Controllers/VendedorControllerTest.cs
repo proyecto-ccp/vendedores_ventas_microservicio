@@ -43,7 +43,9 @@ namespace Vendedor.Tests.Controllers
                 Telefono: "(+57) 123-456-7890",
                 Correo: "correo@correo.com",
                 Direccion: "Carrera 1 # 1-1",
-                Idzona: Guid.NewGuid()
+                Idzona: Guid.NewGuid(),
+                Contrasena: "Contrasena123",
+                IdUsuario: Guid.NewGuid()
                 );
 
             var resultado = await objPrueba.Crear(comando);

@@ -53,6 +53,9 @@ namespace Vendedor.Infraestructura.Adaptadores.Configuraciones
             builder.HasIndex(x => x.Nombre)
                 .IsUnique();
 
+            builder.HasIndex(x => x.Correo)
+                .IsUnique();
+
             builder.Property(x => x.IdTipoDocumento)
                 .HasColumnName("idtipodocumento")
                 .IsRequired();
