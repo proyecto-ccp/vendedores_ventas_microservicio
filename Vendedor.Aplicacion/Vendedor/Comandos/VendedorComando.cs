@@ -2,6 +2,7 @@
 using MediatR;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 using Vendedor.Aplicacion.Comun;
 
 namespace Vendedor.Aplicacion.Vendedor.Comandos
@@ -27,8 +28,11 @@ namespace Vendedor.Aplicacion.Vendedor.Comandos
         [Required(ErrorMessage = "El campo Direccion es obligatorio")]
         string Direccion,
         [Required(ErrorMessage = "El campo Idzona es obligatorio")]
-        Guid? Idzona 
-        
-        ):IRequest<BaseOut>;
+        Guid? Idzona,
+        [Required(ErrorMessage = "El campo Contrasena es obligatorio")]
+        string Contrasena,
+        [Required(ErrorMessage = "El campo IdUsuario es obligatorio")]
+        Guid IdUsuario
+        ) :IRequest<BaseOut>;
     
 }

@@ -2,8 +2,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Productos.Infraestructura.Adaptadores.Repositorios;
 using System.Reflection;
+using Vendedor.Dominio.Puerto.Integraciones;
 using Vendedor.Dominio.Puerto.Repositorios;
+using Vendedor.Dominio.Puertos.Integraciones;
 using Vendedor.Dominio.Servicios.Vendedores;
+using Vendedor.Infraestructura.Adaptadores.Integraciones;
 using Vendedor.Infraestructura.Adaptadores.RepositorioGenerico;
 using Vendedor.Infraestructura.Adaptadores.Repositorios;
 
@@ -65,6 +68,8 @@ builder.Services.AddDbContext<VendedoresDbContext>(options =>
 builder.Services.AddTransient(typeof(IRepositorioBase<>), typeof(RepositorioBase<>));
 builder.Services.AddTransient<IVendedorRepositorio, VendedorRepositorio>();
 builder.Services.AddTransient<IDocumentoRepositorio, DocumentosRepositorio>();
+builder.Services.AddHttpClient<IServicioUsuariosApi, ServicioUsuariosApi>();
+builder.Services.AddHttpClient<IServicioAuditoriaApi, ServicioAuditoriaApi>();
 //Capa Dominio - Servicios
 builder.Services.AddTransient<Registrar>();
 builder.Services.AddTransient<Consultar>();
