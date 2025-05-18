@@ -142,6 +142,35 @@ namespace ServicioVendedor.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Obtiene un reporte de ventas por vendedor en un rango de fechas
+        /// </summary>
+        /// <response code="200"> 
+        /// </response>
+        [HttpPost]
+        [Route("ReporteVentas")]
+        [ProducesResponseType(typeof(ReporteVendedorOut), 200)]
+        [ProducesResponseType(typeof(ProblemDetails), 401)]
+        [ProducesResponseType(typeof(BaseOut), 404)]
+        [ProducesResponseType(typeof(ProblemDetails), 500)]
+        public async Task<IActionResult> ReporteVentas([FromBody] ReporteVentasConsulta input)
+        {
+            var output = await _mediator.Send(input);
+
+            if (output.Resultado == Resultado.Exitoso)
+            {
+                return Ok(output);
+            }
+            else if (output.Resultado == Resultado.SinRegistros)
+            {
+                return NotFound(new { output.Resultado, output.Mensaje, output.Status });
+            }
+            else
+            {
+                return Problem(output.Mensaje, statusCode: (int)output.Status);
+            }
+        }
+
 
 
     }
