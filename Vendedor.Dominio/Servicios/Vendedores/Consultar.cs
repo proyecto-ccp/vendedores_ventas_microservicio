@@ -6,7 +6,6 @@ namespace Vendedor.Dominio.Servicios.Vendedores
     public class Consultar(IVendedorRepositorio vendedorRepositorio)
     {
         private readonly IVendedorRepositorio _vendedorRepositorio = vendedorRepositorio;
-        
         public async Task<List<Entidades.Vendedor>> Vendedores()
         {
             return await _vendedorRepositorio.ObtenerVendedores();
@@ -21,5 +20,6 @@ namespace Vendedor.Dominio.Servicios.Vendedores
         {
             return await _vendedorRepositorio.ObtenerVendedorPorDocumento(idTipoDocumento, numeroDocumento);
         }
+
     }
 }

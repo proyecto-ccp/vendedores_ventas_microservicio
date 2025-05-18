@@ -9,6 +9,7 @@ using Vendedor.Dominio.Servicios.Vendedores;
 using Vendedor.Infraestructura.Adaptadores.Integraciones;
 using Vendedor.Infraestructura.Adaptadores.RepositorioGenerico;
 using Vendedor.Infraestructura.Adaptadores.Repositorios;
+using Vendedor.Infraestructura.Repositorios;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -70,9 +71,11 @@ builder.Services.AddTransient<IVendedorRepositorio, VendedorRepositorio>();
 builder.Services.AddTransient<IDocumentoRepositorio, DocumentosRepositorio>();
 builder.Services.AddHttpClient<IServicioUsuariosApi, ServicioUsuariosApi>();
 builder.Services.AddHttpClient<IServicioAuditoriaApi, ServicioAuditoriaApi>();
+builder.Services.AddTransient<IReporteVentasRepositorio, ReporteVentasRepositorio>();
 //Capa Dominio - Servicios
 builder.Services.AddTransient<Registrar>();
 builder.Services.AddTransient<Consultar>();
+builder.Services.AddTransient<ReporteVentas>();
 
 
 var app = builder.Build();
